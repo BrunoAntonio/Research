@@ -3,6 +3,8 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity, ScrollView} from 'react-native';
 import axios from 'axios';
 
+import { RFValue } from "react-native-responsive-fontsize";
+
 import { LineChart } from 'react-native-chart-kit'
 import { Dimensions } from "react-native";
 
@@ -23,7 +25,7 @@ const MonitoringSystemTraps = ({navigation, route}) => {
   const [useDetectionsDetails, setDetectionsDetails] = useState({ labels: [" "], datasets: [{ data: [0]}]})
   const [usePlantationDetails, setPlantationDetails] = useState([" ", " ", " "])
 
-  const url = 'http://.../monitoring_system/'+ encodeURIComponent(route.params.paramKey)
+  const url = 'http://193.137.203.86:80/monitoring_system/'+ encodeURIComponent(route.params.paramKey)
 
   const executeOnLoad = () => {
     axios
@@ -40,6 +42,7 @@ const MonitoringSystemTraps = ({navigation, route}) => {
         };
 
   const screenWidth = Dimensions.get("window").width;
+  const screenHeight = Dimensions.get("window").height;
   const data = useDetectionsDetails;
 
   const chartConfig = {
@@ -65,7 +68,7 @@ const MonitoringSystemTraps = ({navigation, route}) => {
             
     <View style={styles.topContainer}>
     
-    <Text style={{color: "black", fontSize: 25, top: "40%"}}>{route.params.paramKey}</Text>
+    <Text style={{color: "black", fontSize: RFValue(12), top: "40%"}}>{route.params.paramKey}</Text>
 
         <TouchableOpacity onPress={() => navigation.navigate('MonitoringSystem')} style={styles.backButton}>
         <Image source={back}  style={{width:"100%", height: "100%", resizeMode: 'stretch',}} /></TouchableOpacity>   
@@ -73,15 +76,15 @@ const MonitoringSystemTraps = ({navigation, route}) => {
     </View>
 
     <View style={styles.descriptionContainer}>
-        <Text style={{top:"15%"}}>{i18n.t('plantationName')}: {usePlantationDetails[0]}</Text>
-        <Text style={{top:"20%"}}>{i18n.t('plantationAddress')}: {usePlantationDetails[1]}</Text>
-        <Text style={{top:"25%"}}>{i18n.t('trapID')}: {usePlantationDetails[2]}</Text>
+        <Text style={{top:"15%", fontSize: RFValue(8)}}>{i18n.t('plantationName')}: {usePlantationDetails[0]}</Text>
+        <Text style={{top:"20%", fontSize: RFValue(8)}}>{i18n.t('plantationAddress')}: {usePlantationDetails[1]}</Text>
+        <Text style={{top:"25%", fontSize: RFValue(8)}}>{i18n.t('trapID')}: {usePlantationDetails[2]}</Text>
         
     </View>
 
     <View style={styles.lineChartContainer}>
     
-    <Text style={{ top: "2%", left:"75%"}}>{i18n.t('numberOfDetections')}</Text>
+    <Text style={{ top: "2%", left:"75%", fontSize: RFValue(9)}}>{i18n.t('numberOfDetections')}</Text>
     
     <ScrollView horizontal={true} pagingEnabled={true} contentOffset={{ x: 0, y: 0 }} contentContainerStyle={{ flexGrow: 1, top:"10%" }} >
   
@@ -93,7 +96,7 @@ style= {{
 
       data={data}
       width={(data.labels.length * screenWidth)/10}
-      height={420}
+      height={screenHeight/3}
       yAxisLabel=""
       chartConfig={chartConfig}
       verticalLabelRotation={90}
@@ -119,7 +122,7 @@ style= {{
               left: x - 2 , 
             }}
           >
-            <Text style={{ fontSize: 11 }}>{data.datasets[0].data[index]}</Text>
+            <Text style={{ fontSize: RFValue(5) }}>{data.datasets[0].data[index]}</Text>
           </View>
         );
       }}

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 
+import { RFValue } from "react-native-responsive-fontsize";
+
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 
@@ -19,7 +21,7 @@ const MonitoringSystem = ({navigation}) => {
 
     const executeOnLoad = () => {
         axios
-              .get("http://.../monitoring_system/markers")
+              .get("http://193.137.203.86:80/monitoring_system/markers")
               .then(markers_list => {
                 //console.log(markers_list.data)
                 const markers = markers_list.data
@@ -34,7 +36,7 @@ const MonitoringSystem = ({navigation}) => {
     
     <View style={styles.topContainer}>
     
-        <Text style={{color: "black", fontSize: 25, top: "55%"}}>{i18n.t('monitoringSystem')}</Text>
+        <Text style={{color: "black", fontSize: RFValue(12), top: "55%"}}>{i18n.t('monitoringSystem')}</Text>
 
         <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.backButton}>
         <Image source={back}  style={{width:"100%", height: "100%", resizeMode: 'stretch',}} /></TouchableOpacity>  

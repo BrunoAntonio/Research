@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity, Linking} from 'react-native';
 
+import { RFValue } from "react-native-responsive-fontsize";
+
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 
@@ -16,7 +18,7 @@ const ProjectDescription = ({navigation}) => {
             
     <View style={styles.topContainer}>
     
-        <Text style={{color: "black", fontSize: 25, top: "55%"}}>{i18n.t('projectDescription')}</Text>
+        <Text style={{color: "black", fontSize: RFValue(12), top: "55%"}}>{i18n.t('projectDescription')}</Text>
 
         <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.backButton}>
         <Image source={back}  style={{width:"100%", height: "100%", resizeMode: 'stretch',}} /></TouchableOpacity>  
@@ -24,11 +26,11 @@ const ProjectDescription = ({navigation}) => {
     </View>
 
     <View style={styles.middleContainer}>
-        <Text style={{color: "black", fontSize: 15, top: "-20%", left: "20%", width: "90%"}}>{i18n.t('textDescription')}</Text>
+        <Text style={{color: "black", fontSize: RFValue(8), top: "-20%", left: "20%", width: "90%"}}>{i18n.t('textDescription')}</Text>
         
-        <Text style={{color: 'blue', fontSize: 15, top: "-10%", left: "-20%", width: "90%"}}
-        onPress={ ()=>{ Linking.openURL('https://...')}}>
-        https://...</Text>
+        <Text style={{color: 'blue', fontSize: RFValue(8), top: "-10%", left: "-20%", width: "90%"}}
+        onPress={ ()=>{ Linking.openURL('https://www.cisuc.uc.pt/en/projects/infrapest-intelligent-framework-for-plant-pest-detection')}}>
+        https://www.cisuc.uc.pt/en/projects/infrapest-intelligent-framework-for-plant-pest-detection</Text>
     </View>
 
     <View style={styles.bottomContainer}>

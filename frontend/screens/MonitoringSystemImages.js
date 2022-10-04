@@ -1,7 +1,8 @@
 import React, { useState} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-
 import axios from 'axios';
+
+import { RFValue } from "react-native-responsive-fontsize";
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
@@ -26,7 +27,7 @@ const MonitoringSystemImages = ({navigation, route}) => {
 
     const executeOnLoad = () => {
         axios
-        .post('http://.../monitoring_system/trap_images', {name: route.params.paramKey, date: route.params.paramKey1}) // POST
+        .post('http://193.137.203.86:80/monitoring_system/trap_images', {name: route.params.paramKey, date: route.params.paramKey1}) // POST
         .then(response => {  // Response from backend 
         
             const contentType = 'image/jpg';
@@ -70,7 +71,7 @@ const MonitoringSystemImages = ({navigation, route}) => {
 
      <View style={styles.topContainer}>
     
-        <Text style={{color: "black", fontSize: 25, top: "55%"}}>{route.params.paramKey1}</Text>
+        <Text style={{color: "black", fontSize: RFValue(12), top: "55%"}}>{route.params.paramKey1}</Text>
 
         <TouchableOpacity onPress={() => navigation.navigate('MonitoringSystemTraps', {paramKey: route.params.paramKey})} style={styles.backButton}>
         <Image source={back}  style={{width:"100%", height: "100%", resizeMode: 'stretch',}} /></TouchableOpacity>  
@@ -79,7 +80,7 @@ const MonitoringSystemImages = ({navigation, route}) => {
 
      <View style={styles.showDetectionsContainer}>
       
-      <Text style={{color: "black", fontSize: 25}}>{numberDetections}</Text>
+      <Text style={{color: "black", fontSize: RFValue(10)}}>{numberDetections}</Text>
 
     </View>
 

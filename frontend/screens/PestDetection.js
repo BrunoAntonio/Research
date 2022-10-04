@@ -2,6 +2,8 @@ import React, { useState} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
+import { RFValue } from "react-native-responsive-fontsize";
+
 import axios from 'axios';
 import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
@@ -72,7 +74,7 @@ const PestDetection = ({navigation}) => {
   if (!result.cancelled) {
   
         axios
-        .post('http://.../app_mobile',result.base64) // POST base64 camera image
+        .post('http://193.137.203.86:80/app_mobile',result.base64) // POST base64 camera image
         .then(response => {  // Response from backend (base64 detections image)
 
         //console.log(response.data['a'])
@@ -125,23 +127,23 @@ const PestDetection = ({navigation}) => {
 
      <View style={styles.topContainer}>
 
-        <Text style={{color: "black", fontSize: 25, top: "55%"}}>{i18n.t('pestDetection')}</Text>
+        <Text style={{color: "black", fontSize: RFValue(12), top: "55%"}}>{i18n.t('pestDetection')}</Text>
 
         <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.backButton}>
         <Image source={back}  style={{width:"100%", height: "100%", resizeMode: 'stretch',}} /></TouchableOpacity>       
 
-        {isLoading && (<Text style={{color: "black", fontSize: 20, position: "absolute", top: "90%" }}>{i18n.t('loading')}</Text>)}
+        {isLoading && (<Text style={{color: "black", fontSize: RFValue(9), position: "absolute", top: "90%" }}>{i18n.t('loading')}</Text>)}
       </View>
 
       <View style={styles.showDetectionsContainer}>
       
-      <Text style={{color: "black", fontSize: 25}}>{numberDetections}</Text>
+      <Text style={{color: "black", fontSize: RFValue(9)}}>{numberDetections}</Text>
 
       </View>
 
     <View style={styles.pickerButtonContainer}>
     
-    <Text style={{color: "black", fontSize: 15, alignItems: "center", top: "-10%", left: "40%"}}>{i18n.t('pestSelection')}</Text>
+    <Text style={{color: "black", fontSize: RFValue(8), alignItems: "center", top: "-10%", left: "40%"}}>{i18n.t('pestSelection')}</Text>
     <Picker selectedValue={picked} style={styles.pickerButton} onValueChange={(itemValue) => setPicked(itemValue)}>
       <Picker.Item label={i18n.t('whiteflies')} value={1} />
     </Picker>
@@ -152,14 +154,14 @@ const PestDetection = ({navigation}) => {
     
     <TouchableOpacity onPress={openCamera} style={styles.cameraButton}>
     <Image source={take_picture_icon}  style={{width:"85%", height: "85%",resizeMode: 'stretch'}} /></TouchableOpacity>
-    <Text style={{color: "black", fontSize: 15, alignItems: "center", left: "-32%", top: "10%"}}>{i18n.t('takePicture')}</Text>
+    <Text style={{color: "black", fontSize: RFValue(8), alignItems: "center", left: "-32%", top: "10%"}}>{i18n.t('takePicture')}</Text>
   </View> 
 
   <View style={styles.saveButtonContainer}>
 
     {active && (<TouchableOpacity onPress={saveFile} style={styles.saveButton}>
       <Image source={save_picture_icon}  style={{width:"85%", height: "85%",resizeMode: 'stretch'}} />
-      <Text style={{ color: "black", fontSize: 15, alignItems: "center", left: "-2%", top: "50%"}}>{i18n.t('save')}</Text>
+      <Text style={{ color: "black", fontSize: RFValue(8), alignItems: "center", left: "-2%", top: "50%"}}>{i18n.t('save')}</Text>
       </TouchableOpacity>
       )} 
   
@@ -195,7 +197,7 @@ const styles = StyleSheet.create({
   pickerButton: {
     width: "22%",
     color: "black",
-    fontSize: 28,
+    fontSize: RFValue(6),
     width: "70%",
     padding: "2%",
     height: "50%",

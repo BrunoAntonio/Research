@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 
+import { RFValue } from "react-native-responsive-fontsize";
+
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
 
@@ -24,25 +26,25 @@ const ProjectDescription = ({navigation}) => {
 
     <View style={styles.imageContainer}>
         <Image source={logo} style={{top:"20%", width: "50%", height: "50%" }} /> 
-        <Text style={{color: "black", top:"20%", left:"-1%", fontSize: 30}}>InfraPest</Text>
+        <Text style={{color: "black", top:"20%", left:"-1%", fontSize: RFValue(18)}}>InfraPest</Text>
     </View>
 
     <View style={styles.pestDetectionButtonContainer}>
     <TouchableOpacity onPress={() => navigation.navigate('PestDetection')} style={styles.pestDetectionButton}>
     <Image source={pest_detection_icon}  style={{width:"85%", height: "85%", resizeMode: 'stretch',}} /></TouchableOpacity>
-    <Text style={{color: "black", top:"-30%", fontSize: 15, left:"-17%"}}>{i18n.t('pestDetection')}</Text>
+    <Text style={{color: "black", top:"-30%", fontSize: RFValue(9), left:"-17%"}}>{i18n.t('pestDetection')}</Text>
     </View>
 
     <View style={styles.projectDescriptionButtonContainer}>
     <TouchableOpacity onPress={() => navigation.navigate('ProjectDescription')} style={styles.projectDescriptionButton}>
     <Image source={about_the_app_icon}  style={{width:"85%", height: "85%", resizeMode: 'stretch',}} /></TouchableOpacity>
-    <Text style={{color: "black", top:"-30%", fontSize: 15, left:"-17%"}}>{i18n.t('projectDescription')}</Text>
+    <Text style={{color: "black", top:"-30%", fontSize: RFValue(9), left:"-17%"}}>{i18n.t('projectDescription')}</Text>
     </View>
 
     <View style={styles.monitoringSystemButtonContainer}>
     <TouchableOpacity onPress={() => { navigation.navigate('MonitoringSystem')}} style={styles.monitoringSystemButton}>
     <Image source={monitoring_system_icon}  style={{width:"85%", height: "85%", resizeMode: 'stretch',}} /></TouchableOpacity>
-    <Text style={{color: "black", top:"-30%", fontSize: 15, left:"-12%"}}>{i18n.t('monitoringSystem')}</Text>
+    <Text style={{color: "black", top:"-30%", fontSize: RFValue(9), left:"-12%"}}>{i18n.t('monitoringSystem')}</Text>
     </View>
 
     <View style={styles.bottomContainer}>
